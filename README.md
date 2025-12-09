@@ -1,126 +1,178 @@
 # 🔒 Credit Card Fraud Detection Using Machine Learning
 
-> ⚠️ **Work in Progress** - This project is currently under active development. Model training and evaluation phases are in progress.
+> ⚠️ **Work in Progress** — This project is under active development. Model comparison, evaluation, and refinement phases are currently ongoing.
 
 ## 📋 Table of Contents
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Project Objectives](#project-objectives)
-- [Current Progress](#current-progress)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
+
+* [Overview](#overview)
+* [Dataset](#dataset)
+* [Data Quality Observations](#data-quality-observations)
+* [Project Objectives](#project-objectives)
+* [Current Progress](#current-progress)
+* [Technologies Used](#technologies-used)
+* [Installation](#installation)
+* [Usage](#usage)
+
+---
 
 ## 🎯 Overview
 
-Credit card fraud represents a significant threat to the integrity of financial transactions and consumer trust in digital commerce. As the reliance on credit cards for everyday purchases continues to grow, so does the sophistication of fraudsters exploiting vulnerabilities in the system. 
+Credit card fraud poses a major threat to digital financial systems, with increasing transaction volumes creating opportunities for fraudulent activity. This project explores fraud detection using machine learning, focusing on understanding patterns in transaction behavior and evaluating multiple classification models.
 
-This project aims to:
-- Analyze patterns of credit card fraud
-- Understand the factors contributing to fraudulent activities
-- Develop machine learning models for fraud detection and prevention
+What this project aims to achieve:
+
+* Analyze transaction trends and fraud behaviour
+* Evaluate the impact of data preprocessing and imbalanced class handling
+* Compare multiple machine learning models to identify the best fraud detector
+* Understand strengths and limitations of working with synthetic financial data
+
+---
 
 ## 📊 Dataset
 
-**Source:** [Kaggle - Credit Card Fraud Dataset](https://www.kaggle.com/)
-
-The dataset comprises **100,000 simulated transactions** designed to replicate real-world credit card activity.
+**Source:** *Kaggle — Credit Card Fraud Dataset (Simulated)*
+**Transaction Count:** ~100,000 synthetic transactions
 
 ### Features:
-| Feature | Description |
-|---------|-------------|
-| `TransactionID` | Unique identifier for each transaction |
-| `TransactionDate` | Date and time of the transaction |
-| `Amount` | Monetary value of the transaction |
-| `MerchantID` | Identifier for the merchant |
-| `TransactionType` | Purchase or refund indicator |
-| `Location` | Geographic location of the transaction |
-| `IsFraud` | Binary target variable (1 = Fraud, 0 = Legitimate) |
+
+| Feature           | Description                                 |
+| ----------------- | ------------------------------------------- |
+| `TransactionID`   | Unique identifier for each transaction      |
+| `TransactionDate` | Timestamp of transaction                    |
+| `Amount`          | Transaction amount                          |
+| `MerchantID`      | Merchant identification code                |
+| `TransactionType` | Purchase or refund                          |
+| `Location`        | Geographic location                         |
+| `IsFraud`         | Target variable (1 = Fraud, 0 = Legitimate) |
+
+---
+
+## ⚠️ Data Quality Observations
+
+During analysis, several **limitations of the synthetic dataset** were identified:
+
+* **Highly synthetic patterns** in several fields
+* **Limited Feature Set** severely limiting model capability
+* **Imbalanced classes** (fraud cases significantly lower than legitimate ones)
+* **Weak correlations** between features and fraud, typical of simulated data
+
+
+These considerations are now part of the project narrative to reflect real-world analytical thinking.
+
+---
 
 ## 🎯 Project Objectives
 
 ### 1. Exploratory Data Analysis (EDA)
-- ✅ Examine distribution of transaction amounts and types
-- ✅ Identify trends in transaction dates and locations
-- ✅ Analyze the ratio of fraudulent to legitimate transactions
-- ✅ Create comprehensive visualizations (12+ plots)
+
+* ✅ Distribution analysis of transaction amounts & types
+* ✅ Temporal trends (hourly, daily, monthly fraud rates)
+* ✅ Fraud vs. legitimate class comparison
+* ✅ 12+ visualizations (histograms, heatmaps)
 
 ### 2. Pattern Recognition
-- ✅ Analyze temporal patterns (hourly, daily, monthly fraud rates)
-- ✅ Explore correlations between features and fraud occurrence
-- ✅ Identify high-risk transaction characteristics
 
-### 3. Fraud Detection Modeling
-- 🔄 Implement Random Forest classifier
-- ⏳ Evaluate model performance (accuracy, precision, recall, F1-score, ROC-AUC)
-- ⏳ Perform hyperparameter tuning
-- ⏳ Feature importance analysis
+* ✅ Temporal fraud behaviour
+* ✅ Feature correlation analysis
+* ✅ Identification of high-risk transaction characteristics
 
+### 3. Fraud Detection Modeling *(Updated Scope)*
 
-**Legend:** ✅ Completed | 🔄 In Progress | ⏳ Planned
+Instead of training only one model, the project now compares **multiple classifiers**:
+
+🔄 Planned Models:
+
+* Logistic Regression
+* Random Forest
+* XGBoost
+* Gradient Boosting
+
+Evaluation Metrics:
+
+* Precision
+* Recall
+* F1-score
+* ROC-AUC
+* Confusion matrix
+
+**Legend:**
+✅ Completed | 🔄 In Progress | ⏳ Planned
+
+---
 
 ## 📈 Current Progress
 
 ### ✅ Completed:
-- Comprehensive EDA with 12 visualizations
-- Temporal fraud pattern analysis (hour, day, month)
-- Correlation matrix and feature analysis
-- Fraud rate calculations across multiple time granularities
-- Data preprocessing and feature engineering
+
+* Full EDA with 12 visualizations
+* Fraud pattern exploration (hour/day/month)
+* Correlation matrix & statistical feature inspection
+* Fraud rate calculation
+* Data cleaning & preprocessing experimentation
+* Identification of data quality issues and limitations
 
 ### 🔄 In Progress:
-- Random Forest model training
-- Model evaluation and validation
+
+* Multi-model training pipeline
+* Model evaluation and comparison
 
 ### ⏳ Next Steps:
-- Hyperparameter optimization
-- Feature importance ranking
+
+* Identification of most suitable model 
+
+---
 
 ## 🛠️ Technologies Used
 
-- **Python 3.13**
-- **Data Analysis:** Pandas, NumPy
-- **Visualization:** Matplotlib, Seaborn
-- **Machine Learning:** Scikit-learn
-- **Development Environment:** Jupyter Notebook
-- **Version Control:** Git, GitHub
+* **Python 3.13**
+* **Data Analysis:** Pandas, NumPy
+* **Visualization:** Matplotlib, Seaborn
+* **Machine Learning:** Scikit-learn, XGBoost
+* **Dev Environment:** Jupyter Notebook
+* **Version Control:** Git & GitHub
+
+---
 
 ## 📥 Installation
 
 ### Prerequisites
-- Python 3.8 or higher
-- pip package manager
+
+* Python 3.8+
+* pip
 
 ### Setup
 
-1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/credit-card-fraud-detection.git
 cd credit-card-fraud-detection
 ```
 
-2. **Create a virtual environment**
+Create a virtual environment:
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate       # Windows: venv\Scripts\activate
 ```
 
-3. **Install dependencies**
+Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
+---
+
 ## 🚀 Usage
 
-1. **Open Jupyter Notebook**
+Open Jupyter Notebook:
+
 ```bash
 jupyter notebook
 ```
 
-2. **Navigate to the notebook**
-   - Open `fraud_detection_workflow.ipynb` to view the exploratory data analysis
-   - Open `fraud_detection_model.ipynb` (coming soon) for model training
+### Notebooks:
 
-3. **Run the cells** sequentially to reproduce the analysis
+* `fraud_detection_workflow.ipynb` — EDA & preprocessing
+* `model_comparison.ipynb` — Multiple classifiers (in progress)
 
-
+Run cells sequentially to reproduce the analysis.
